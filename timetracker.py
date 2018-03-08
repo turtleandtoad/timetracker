@@ -4,7 +4,6 @@ Created on Thu Jan  8 07:20:33 2015
 
 @author: joylee
 """
-#import tkinter as tk
 
 #import pandas as pd
 #import numpy as np
@@ -78,33 +77,36 @@ class MainPage(tk.Frame):
         #start button
         start_button = tk.Button(self, text="Start", 
                            command=lambda: self.start(self.start_time))
-        start_button.grid(row=1, column=0)
+        start_button.grid(row=0, column=0)
 
         #stop button
        	stop_button = tk.Button(self, text = "Stop!", command=lambda: self.stop(self.end_time))
-       	stop_button.grid(row=2, column=0)
+       	stop_button.grid(row=1, column=0)
 
         #enter button
         enter_button = tk.Button(self, text = "Print Everything", 
                command=lambda: self.enter_time(self.start_time, self.end_time))
-        enter_button.grid(row=3, column=0)
+        enter_button.grid(row=2, column=0)
 
         #subject menu
         self.s_entry = tk.StringVar()
         self.s_entry.set("CS")
         self.s_entry.trace("w", self.update_topics)
-        subject_menu = tk.OptionMenu(self, self.s_entry, *self.subjectlist)
-        subject_menu.grid(row=0, column=1)
+        self.subject_menu = tk.OptionMenu(self, self.s_entry, *self.subjectlist)
+        self.subject_menu.config(width=12)
+        self.subject_menu.grid(row=0, column=1)
 
         #topic menu
         self.t_entry = tk.StringVar()
         self.t_entry.trace("w", self.update_courses)
         self.topic_menu = tk.OptionMenu(self, self.t_entry, "")
+        self.topic_menu.config(width=12)
         self.topic_menu.grid(row=1, column=1)
 
         #course menu
         self.c_entry = tk.StringVar()
         self.course_menu = tk.OptionMenu(self, self.c_entry, "")
+        self.course_menu.config(width=12)
         self.course_menu.grid(row=2, column=1)
 
         #notes box
@@ -155,21 +157,26 @@ class MainPage(tk.Frame):
             cmenu.add_command(label=course, command=lambda c=course: self.c_entry.set(c))
 
 
-    # def note_taking(self):
-    #     self.notes() = 
+    def note_taking(self):
+         self.notes = self.notes_box.get("1.0", "end-1c")
+         return self.notes
 
     def enter_time(self, start_time, end_time):
         self.course = self.c_entry.get()
+        self.notes = self.notes_box.get("1.0", "end-1c")
         print(start_time)
         print(end_time)
         print(self.elapsed_time)
         print(self.subject)
         print(self.topic)
         print(self.course)
+
         count_file = open("counts2.csv", "a")
-        count_file.write(str(self.start_time) + "," + str(self.elapsed_time) +
+        count_file.write("\n" + str(self.start_time) + "," + str(self.elapsed_time) +
                          "," + str(self.subject) + "," + str(self.topic) + "," + 
-                         str(self.course) + "," + str(self.notes))      
+                         str(self.course) + "," + str(self.notes))
+
+        count_file.close()    
 
 
 app = Window()
