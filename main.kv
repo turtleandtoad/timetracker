@@ -1,0 +1,146 @@
+<TabPanelsWidget>:
+    smenu: subject_spinner
+    tmenu: topic_spinner
+    cmenu: course_spinner
+    notesbox: notes_input
+    journalbox: journal
+    hlevel: happy_level
+
+    startbtn: start_btn
+    stopbtn: stop_btn
+    resetbtn: reset_btn
+
+    do_default_tab: False
+
+    TabbedPanelItem:
+        id: data_entry
+        text: "Timer Tracker"
+        GridLayout:
+            cols: 2
+
+            BoxLayout:
+                orientation: "vertical"
+
+                Spinner:
+                    id: subject_spinner
+                    text: "Subject"
+                    values: app.subjectlist
+                    on_text: root.update_topics()
+                    background_normal: ""
+                    background_color: 0.086, 0.157, 0.251, 1
+                    # navy hex: #162840 rgb: 22, 40, 64
+
+                Spinner:
+                    id: topic_spinner
+                    text: "Topics"
+                    values: app.topiclist
+                    on_text: root.update_courses()
+                    background_normal: ""
+                    background_color: (171/255, 202/255, 121/255, 1)
+                    # light green hex:abca79 (171/255, 202/255, 121/255)  
+
+
+                Spinner:
+                    id: course_spinner
+                    text: "Courses"
+                    values: app.courselist
+                    background_normal: ""
+                    background_color: (222/255, 150/255, 52/255, 1)
+                    #ee9549 or #de9634
+                #    on_text: root.spinner_clicked(course_spinner.text)
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    Button:
+                        id: start_btn
+                        text: "Start"
+                        on_press: root.start()
+                        size_hint: .4, 1
+                        
+                    Button:
+                        id: stop_btn
+                        text: "Stop"
+                        on_press: root.stop()
+                        size_hint: .4, 1
+                        
+                    Button:
+                        id: reset_btn
+                        text: "Reset"
+                        on_press: root.reset()
+                        size_hint: .4, 1
+                        
+
+            BoxLayout:
+                orientation: "vertical"  
+
+                Label: 
+                    size_hint: [1, .1]    
+                    text: "Notes"
+                
+                TextInput:
+                    id: notes_input
+                    text: ""
+
+    TabbedPanelItem:
+        text: "Journal"
+
+        BoxLayout:
+            orientation: "vertical"
+            Label:
+                text: "Happiness Level"
+                size_hint: 1, .1
+            Slider:
+                id: happy_level
+                min: 0.0
+                max: 10.0
+                step: .1
+                value: 5
+                value_track: "True"
+                size_hint: 1, .2
+            TextInput:
+                id: journal
+                text: ""
+            Button:
+                text: "Enter"
+                on_press: root.journal_enter()
+                size_hint: 1, .15
+
+    TabbedPanelItem:
+        id: graphs
+        text: "Graphs"
+
+        BoxLayout:
+            orientation: "vertical"
+
+            BoxLayout:
+                #size_hint: .2, 1
+                orientation: "horizontal"
+                Button:
+                    text: "By Subject"
+
+                Button:
+                    text: "By Topic"
+
+                Button:
+                    text: "By Course"
+
+
+
+            BoxLayout:
+                orientation: "horizontal"
+                Button:
+                    text: "S1"
+
+                Button:
+                    text: "S2"
+
+                Button:
+                    text: "S3"
+
+
+
+
+
+
+
+
