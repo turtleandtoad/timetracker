@@ -34,20 +34,11 @@ class TabPanelsWidget(TabbedPanel):
 
 ###############     subject/topic/course updating functions     #########
     alltopics = {"Subjects": ["Topics"], "CS": ["CSS/HTML", "JavaScript", "Python", "R",
-    "SQL", "C/C++", "Other"], "Exercise": ["Cardio", "Mix", "Strength", "Yoga"], "Language": ["Korean", "Russian",
-    "Spanish"],"Music": ["Flute", "Piano"], "Stats": ["Bayesian", "School"], "Writing":
-    ["FF", "Original"]}
+    "SQL"}
 
     allcourses = {"Topics": ["Courses"], "CSS/HTML": ["Mozilla", "freeCodeCamp"],
     "JavaScript": ["Mozilla", "Codecademy"], "Python": ["Counts", "Text Adventure", "Text Analytics", "NLP", "Other"], "R":
-    ["Fun", "Counts"], "SQL": ["Codecademy", "HackerRank", "Pgexercises", "SQLZOO"],
-    "C/C++": ["EdX: CS50"], "Other": ["EdX: CS50"], "Cardio": ["NA"], "Mix": ["NA"], "Strength": ["NA"], "Yoga": ["NA"],
-    "Korean": ["Anki", "Duolingo",
-    "Immersion"], "Russian": ["Anki", "Duolingo", "Immersion"], "Spanish":
-    ["Anki", "Duolingo", "Immersion"], "Bayesian": ["Bayesian for Hackers", "Think Bayes"],
-    "School": ["STAT404: Probability", "STAT408: Regression",
-    "STAT388: Predictive", "STAT488: Consulting", "Research"], 
-    "FF": ["S.T.", "C.A.", "Other"], "Original": ["N.E.", "C.K.", "Other"] }
+    ["Fun", "Counts"], "SQL": ["Codecademy", "HackerRank", "Pgexercises", "SQLZOO"]}
 
 
     smenu = ObjectProperty(None)
@@ -165,7 +156,7 @@ class TabPanelsWidget(TabbedPanel):
 ########################         App      ########################
 
 class MyApp(App):
-    subjectlist = ["CS", "Exercise", "Language", "Music", "Stats", "Writing"]
+    subjectlist = ["CS"]
     topiclist = []
     courselist = []
 
