@@ -73,6 +73,12 @@
             BoxLayout:
                 orientation: "vertical"  
 
+                Label:
+                    id: stop_watch
+                    text: root.elapsed_time
+                    size_hint: [1, .1]
+                    background_color: (0.345, 0.345, 0.345, 1)
+
                 Label: 
                     size_hint: [1, .1]    
                     text: "Notes"
@@ -138,6 +144,25 @@
                     text: "S3"
 
 
+    TabbedPanelItem:
+        id: settings
+        text: "Settings"
+
+        BoxLayout:
+            orientation: "vertical"
+
+            Button:
+                id: add_subject
+                text: "Add Subject"
+            
+            Button:
+                id: add_topic
+                text: "Add Topic"
+
+            Button:
+                id: add_course
+                text: "Add Course"
+                
 
 
 
